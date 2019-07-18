@@ -2,9 +2,9 @@ package main
 
 import "testing"
 
-func TestLoop(t *testing.T) {
-    number := loop()
-    if number != 10 {
-       t.Errorf("Number was incorrect, got: %d, want: %d.", number, 10)
-    }
+func TestGreeting(t *testing.T) {
+	html := greeting("Code.education Rocks!")
+	if html != "<b>Code.education Rocks!</b>" {
+		t.Errorf("Text html was incorrect, got: %s, want: %s.", html, "<b>Code.education Rocks!</b>")
+	}
 }

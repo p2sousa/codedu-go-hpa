@@ -3,7 +3,12 @@ package main
 import (
 	"fmt"
 	"math"
+	"net/http"
 )
+
+func greeting(text string) string {
+	return fmt.Sprintf("<b>%s</b>", text)
+}
 
 func loop() float64 {
 	x := 0.0001
@@ -14,6 +19,9 @@ func loop() float64 {
 }
 
 func main() {
-	loop()
-	fmt.Println("Code.education Rocks!")
+ 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		loop()
+		fmt.Fprintf(w, greeting("Code.education Rocks!"))
+ 	})
+ 	http.ListenAndServe(":80", nil)
 }

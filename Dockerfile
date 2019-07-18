@@ -1,12 +1,16 @@
 FROM golang:1.12 as builder
 
-WORKDIR $GOPATH/src/mypackage/myapp/
-COPY ./src/app .
-# Using go get.
-RUN go get -d -v
-# Build the binary.
-RUN go build -o /go/bin/app -ldflags "-s -w"
+WORKDIR /go/src/app
+
+COPY src/app/main.go .
+
+RUN go get -d -v ./...
+RUN CGO_ENABLED=0 GOOS=linux  go install -a -installsuffix cgo -v ./...
 
 FROM scratch
-COPY --from=builder /go/bin/app /app
-ENTRYPOINT ["/app"]
+
+WORKDIR /bin
+
+COPY --from=builder /go/bin/app /bin
+
+CMD ["/bin/app"]
