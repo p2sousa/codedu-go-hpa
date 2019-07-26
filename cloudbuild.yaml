@@ -1,0 +1,17 @@
+steps:
+
+- id: 'Instalando aplicativo GO...'
+  name: 'gcr.io/cloud-builders/go'
+  args: ['install', 'app']
+  env: ['GOPATH=.']
+
+- id: 'Executando Testes...'
+  name: 'gcr.io/cloud-builders/go'
+  args: ['test', '-v','./...']
+  env: ['GOPATH=.']
+
+- id: 'Criando Build da Imagem...'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/golang-loop', '.']
+
+images: ['gcr.io/$PROJECT_ID/golang-loop'
