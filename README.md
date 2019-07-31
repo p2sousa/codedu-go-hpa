@@ -1,4 +1,9 @@
-### Modulo DevOps - Kubernets (k8s) - HPA
+### Modulo DevOps - Kubernets (k8s) - HPA e CI\CD
+
+### Cluster do servidor web GO
+Endpoint do servidor web em GO com processo de loop antes de renderizar:
+
+- **[servidor web GO](http://34.68.239.24/)**
 
 ### Imagem GoLang Servidor Web (LOOP)
 
