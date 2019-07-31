@@ -10,9 +10,9 @@ steps:
   args: ['test', '-v','./...']
   env: ['GOPATH=.']
 
-- id: "Building image from Dockerfile.prod"
-    name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/golang-loop:$SHORT_SHA", "-f", "Dockerfile.prod", "."]
+- id: "Building image from Dockerfile"
+  name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "gcr.io/$PROJECT_ID/golang-loop:$SHORT_SHA", "-f", "Dockerfile", "."]
 
   - id: "Pushing image"
     name: "gcr.io/cloud-builders/docker"
