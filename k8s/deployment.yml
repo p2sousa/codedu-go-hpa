@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: go-hpa
-        image: p2sousa/go-hpa
+        image: img-go-hpa-deployment
         resources:
           requests:
             memory: 100Mi
